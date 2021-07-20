@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: system:openshift:scc:spire
+  namespace: spire-workload
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:spire
+subjects:
+  - kind: ServiceAccount
+    name: spire-workload
+    namespace: spire-workload
