@@ -41,7 +41,21 @@ $ kubectl apply -f $SPIRE_OPENSHIFT/spire-scc-clusterrole.yaml
 
 No additional permissions are required by SPIRE server when running in OpenShift. The steps listed in the **Configure SPIRE Server** can be completed as documented.
 
-The SPIRE agent does require host level access to OpenShift nodes, which would be blocked by default when using the `restricted` SCC.
+Change into the `$SPIRE_TUTORIALS` directory and follow the directions in the **Configure SPIRE Server** section:
+
+```shell
+$ cd $SPIRE_TUTORIALS
+```
+
+Then complete the tasks as described.
+
+Once complete, return to the prior directory
+
+```shell
+$ popd
+```
+
+Since the SPIRE agent does require host level access to OpenShift nodes, which would be blocked by default when using the `restricted` SCC.
 
 First, create the _ServiceAccount_ and _ClusterRole_ as documented:
 
@@ -57,7 +71,13 @@ With the `spire-agent` _ServiceAccount_ created, create a _RoleBinding_ that wil
 $ kubectl apply -f $SPIRE_OPENSHIFT/spire-agent-scc-rolebinding.yaml
 ```
 
-Complete the remaining portions of the SPIRE agent section.
+Create the SPIRE agent ConfigMap and DaemonSet.
+
+```shell
+$ kubectl apply \
+    -f $SPIRE_TUTORIALS/agent-configmap.yaml \
+    -f $SPIRE_TUTORIALS/agent-daemonset.yaml
+```
 
 At this point, you should see a single SPIRE server pod and a SPIRE agent pod for each Kubernetes Node.
 
