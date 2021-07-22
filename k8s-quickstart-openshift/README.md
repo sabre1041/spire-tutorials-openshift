@@ -44,7 +44,7 @@ No additional permissions are required by SPIRE server when running in OpenShift
 Change into the `$SPIRE_TUTORIALS` directory and follow the directions in the **Configure SPIRE Server** section:
 
 ```shell
-$ cd $SPIRE_TUTORIALS
+$ pushd $SPIRE_TUTORIALS
 ```
 
 Then complete the tasks as described.
